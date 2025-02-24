@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="text-center">
+<a href="{% url 'project:note_edit' project.id note.id %}" class="rounded-md py-4 px-8 bg-sky-600 text-sm font-medium hover:bg-gray-700 hover:text-white">Edit</a>
+<a href="{% url 'project:note_delete' project.id note.id %}" class="rounded-md py-4 px-8 bg-amber-600 text-sm font-medium hover:bg-gray-700 hover:text-white">Delete</a>
+
+    <div class="max-w-xl mx-auto bg-slate-800 py-20 text-white">
+    
+    <h1 class="text-3xl">{{ note.name }}</h1>
+    <p class="">{{ note.body }}</p>
+
+    </div>        
+</div>
+{% endblock %}

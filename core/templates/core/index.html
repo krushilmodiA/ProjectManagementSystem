@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<header class="py-12 text-center bg-slate-200">
+    <h1 class="text-3xl">Welcome to Home page</h1>
+    
+       <!-- just uncomment this code for see feedback databases and see function at core/views.py/index  -->
+        <!-- feedbacks datas 
+       <div class="max-w-xl mx-auto bg-slate-800 text-center py-20">
+        {% for feedbacks in feedback %}
+            <p>{{ forloop.counter }}</p>
+            <p>{{ feedbacks.name }}<p>
+            <p>{{ feedbacks.desc }}<p>
+            <p>{{ feedbacks.email }}<p>
+        {% endfor %}
+    </div> -->
+    
+</header>        
+        {% endblock %}

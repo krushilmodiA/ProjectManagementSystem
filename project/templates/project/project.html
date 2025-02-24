@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="text-center">
+<h1 class="mb-6 text-3xl">{{ project.name }}</h1>
+
+<a href="{% url 'todolist:add' project.id %}" class="rounded-md py-4 px-8 bg-sky-600 text-sm font-medium hover:bg-gray-700 hover:text-white inline-block">Add ToDoList</a>
+<a href="{% url 'project:edit' project.id %}" class="rounded-md py-4 px-8 bg-sky-600 text-sm font-medium hover:bg-gray-700 hover:text-white">Edit</a>
+<a href="{% url 'project:delete' project.id %}" class="rounded-md py-4 px-8 bg-amber-600 text-sm font-medium hover:bg-gray-700 hover:text-white">Delete</a>
+
+<hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+    <h1 class ="mt-12 text-3xl text-center">To-Do Lists</h1>
+
+    {% for todolist in project.todolists.all %}
+        <div class="mb-4 mr-80 ml-80 mt-6 py-8 px-8 bg-slate-200 grid-cols-4 gap-4">
+            <a href="{% url 'todolist:todolist' project.id todolist.id %}">
+                <h3 class="mb-4 ext-xl">{{ todolist.name }}</h3>
+                <p class="text-sm text-slate-600">{{ todolist.description }}</p>
+            </a>
+        </div>
+    {% endfor %}
+
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+        <h1 class ="mt-12 text-3xl text-center">Uploaded Files</h1>
+            <!--add file button here -->
+        <a href="{% url 'project:upload_file' project.id %}" class="mt-12 rounded-md py-4 px-8 bg-red-600 text-sm font-medium hover:bg-red-950 hover:text-white inline-block">File Upload</a>
+
+        {% for projectfile in project.files.all %}
+        <div class="mb-4 mr-80 ml-80 mt-6 py-8 px-8 bg-slate-200 grid-cols-4 gap-4">
+            
+                <h3 class="mt-12 mb-4 ext-xl">{{ projectfile.name }}</h3>
+                <!-- for download and open file in project -->
+                <a href="{{ projectfile.attachment.url }}" target="_blank" class="text-sm text-slate-600">Download project</a>
+                 | 
+                <!-- for delete file in project -->
+                <a href="{% url 'project:delete_file' project.id projectfile.id %}"class="text-sm text-slate-600">Delete
+                </a>
+        </div>
+        {% endfor %}
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+        <h1 class ="mt-12 text-3xl text-center">Create Note</h1>
+            <!--add Note button here -->
+        <a href="{% url 'project:create_note' project.id %}" class="mt-12 rounded-md py-4 px-8 bg-red-600 text-sm font-medium hover:bg-red-950 hover:text-white inline-block">Add Notes</a>
+    
+        {% for note in project.notes.all %}
+          <div class="mb-4 mr-80 ml-80 mt-6 py-8 px-8 bg-slate-200 grid-cols-4 gap-4">
+            <a href="{% url 'project:note_detail' project.id note.id %}">
+                <h3 class="mb-4 ext-xl">{{ note.name }}</h3>
+                
+                <p class="text-sm text-slate-600">{{ note.body|truncatechars:50 }}</p>
+            </a>
+         </div>
+        {% endfor %}
+       
+    </div>
+
+{% endblock %}
