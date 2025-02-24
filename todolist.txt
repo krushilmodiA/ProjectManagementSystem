@@ -1,0 +1,153 @@
+(1) create base pase 
+    create front page
+    create about page
+    create signup page and Log in page 
+    create basic page for projectsManageSys
+    Basic details page for projectsManageSys
+    
+        Done----------------- Done
+
+(2) create Virtual env
+    create empty project
+    create core app and front page
+    create about page
+
+        Done----------------- Done
+
+(3) Custom user model  --> changes:- settings.py (AUTH_USER_MODEL = account.User) "AND" --> account->models.py.
+
+    Sign Up --> changes:-> account/views.py --> account/templates/signup.html 
+
+    Log in --> changes:-> account/views.py --> account/templates/login.html
+
+        Done----------------- Done
+
+
+(4) project list page --> templates/project/project.html --> views.py -> projects functon -> project/urls.py -> pizarra/urls.py
+ 
+    project items add or create project -> templates/project/add.html --> views.py -> (add_project)functon -> project/urls.py
+
+    detail page inside Add project pages
+    
+    make Edit operation on created project.
+
+    make delete operation on created project.
+    
+        Done----------------- Done
+
+
+
+(5) create a new app as todolist. change:--> todolist.views.py --> send id as argument
+
+    to-do-list details page
+
+    to-do-list edit page
+
+    to-do-list delete todo
+
+
+        Done----------------- Done
+
+
+(6) create task app
+
+    create task detail page
+
+    edit task handle page
+
+    delete task handle page
+
+    
+        Done----------------- Done
+
+(7) create Files upload in projects --> project/model.py --> views.py --> urls.py --> forms.py --> upload_file.html.
+    changes:- settings.py -> for image
+
+    create file list on project page 
+
+    Delete file from project page 
+
+        Done----------------- Done
+
+
+(8) Create Note page in project app.
+
+    we can create list of notes.
+
+    detail page of notes or create a new page for edit, delete or see notes.
+
+    edit note page inside note_detail
+
+    delete note page inside note_detail
+
+
+        Done----------------- Done
+
+(9) github
+
+    (1) pip install WhiteNoise
+        
+        (1) Managing static files.
+
+           -> if there are static files in our project and want to deploy
+             ,then we have to add this code in our project 
+
+                add this line in settings.py's MIDDLEWARE.
+                --> "whitenoise.middleware.WhiteNoiseMiddleware"
+
+                In INSTALLED_APPS
+                --> 'whitenoise.runserver_nostatic',
+
+                --> STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+                    STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+                --> terminal code - python manage.py collectstatic  
+
+    (2) pip install gunicorn
+            -> if project is going to deployed then it will handle their own server instead of local server.
+
+    (3) pip install psycopg2
+
+    
+    (4) how to add requirements.txt file
+             
+             Terminal code  :--> pip freeze > requirements.txt
+
+    (5) create ssh key
+        
+        ->go into git base terminal.
+        
+        ->(1) deactivate (2) cd ~ (3) pwd (4) mkdir .ssh (5) cd .ssh 
+            (6) ls (7) rm id_ed25519.pub (8) ssh-keygen.exe (click enter - enter and enter) 
+            (9) ls (10) cat id_ed25519.pub.
+        
+        ->copy that terminal ssh key, then go to the (github), then go to the (settings), 
+          then go to the (SSH and GPG keys), then go to the (new ssh key), paste ssh key in description box and add it.
+    
+    
+    (6) create repository and push project in github.
+
+        -> go into git base terminal.
+        -> set path in git bash, such as(cd /C/python/Django/ProjectManageSys/pizarra/)
+        -> git bash code :- 
+            (1) git config --global user.name "Krushil Modi"
+            (2) git config --global user.email "krushilmodi@gmail.com"
+            (3) git config --global push.default matching
+            (4) git config --global alias.co checkout
+            (5) git init
+            (6) git add .
+            (7) git commit -am "first commit"
+        
+        ->open github and go into (the repositories),then go to (new), then give (repository name) and save it.
+        
+        ->now we can see github push project command like this-
+        
+        (…or push an existing repository from the command line
+        git remote add origin https://github.com/krushilmodiA/ProjectManagementSystem.git
+        git branch -M main
+        git push -u origin main)
+        
+        ->lastly, if any chnages made in our project and then push on github main repo.so add this commands.
+            ->git add .
+            ->git commit -am 'anything we can write here'
+            ->git push
